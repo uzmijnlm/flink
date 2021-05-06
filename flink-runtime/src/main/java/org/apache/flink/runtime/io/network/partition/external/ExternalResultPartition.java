@@ -172,18 +172,18 @@ public class ExternalResultPartition<T> extends ResultPartition<T> {
 			List<MemorySegment> memory = memoryManager.allocatePages(parentTask, numPages);
 
 			// If the memory amount is less that the number of subpartitions, it should enter partition merge process.
-			if (numberOfSubpartitions <= hashMaxSubpartitions && numberOfSubpartitions <= memory.size()
-				&& !serializerManager.useCompression()) {
-				fileWriter = new PartitionHashFileWriter<T>(
-					numberOfSubpartitions,
-					partitionRootPath,
-					memoryManager,
-					memory,
-					ioManager,
-					typeSerializer,
-					numBytesOut,
-					numBuffersOut);
-			} else {
+//			if (numberOfSubpartitions <= hashMaxSubpartitions && numberOfSubpartitions <= memory.size()
+//				&& !serializerManager.useCompression()) {
+//				fileWriter = new PartitionHashFileWriter<T>(
+//					numberOfSubpartitions,
+//					partitionRootPath,
+//					memoryManager,
+//					memory,
+//					ioManager,
+//					typeSerializer,
+//					numBytesOut,
+//					numBuffersOut);
+//			} else {
 				fileWriter = new PartitionMergeFileWriter<T>(
 					numberOfSubpartitions,
 					partitionRootPath,
@@ -198,7 +198,7 @@ public class ExternalResultPartition<T> extends ResultPartition<T> {
 					parentTask,
 					numBytesOut,
 					numBuffersOut);
-			}
+//			}
 
 			initialized = true;
 

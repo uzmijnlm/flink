@@ -889,7 +889,7 @@ public class Task implements Runnable, TaskActions, CheckpointListener {
 		for (ResultPartitionDeploymentDescriptor desc: resultPartitionDeploymentDescriptors) {
 			ResultPartitionID partitionId = new ResultPartitionID(desc.getPartitionId(), executionId);
 			ResultPartitionType partitionType = desc.getPartitionType();
-			if (partitionType.isBlocking() && shuffleType == BlockingShuffleType.YARN) {
+//			if (partitionType.isBlocking() && shuffleType == BlockingShuffleType.YARN) {
 				ExternalResultPartition resultPartition = new ExternalResultPartition(
 					taskManagerConfig.getConfiguration(),
 					taskNameWithSubtaskAndId,
@@ -903,23 +903,23 @@ public class Task implements Runnable, TaskActions, CheckpointListener {
 				producedPartitions[counter] = resultPartition;
 				externalPartitions.add(resultPartition);
 				LOG.info("Create external result partition " + taskNameWithSubtaskAndId + " " + partitionId);
-			} else {
-				InternalResultPartition resultPartition = new InternalResultPartition(
-					taskNameWithSubtaskAndId,
-					this,
-					jobId,
-					partitionId,
-					partitionType,
-					desc.getNumberOfSubpartitions(),
-					desc.getMaxParallelism(),
-					network.getResultPartitionManager(),
-					resultPartitionConsumableNotifier,
-					ioManager,
-					desc.sendScheduleOrUpdateConsumersMessage());
-				producedPartitions[counter] = resultPartition;
-				internalPartitions.add(resultPartition);
-				LOG.info("Create internal result partition " + taskNameWithSubtaskAndId + " " + partitionId);
-			}
+//			} else {
+//				InternalResultPartition resultPartition = new InternalResultPartition(
+//					taskNameWithSubtaskAndId,
+//					this,
+//					jobId,
+//					partitionId,
+//					partitionType,
+//					desc.getNumberOfSubpartitions(),
+//					desc.getMaxParallelism(),
+//					network.getResultPartitionManager(),
+//					resultPartitionConsumableNotifier,
+//					ioManager,
+//					desc.sendScheduleOrUpdateConsumersMessage());
+//				producedPartitions[counter] = resultPartition;
+//				internalPartitions.add(resultPartition);
+//				LOG.info("Create internal result partition " + taskNameWithSubtaskAndId + " " + partitionId);
+//			}
 			++counter;
 		}
 	}

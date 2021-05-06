@@ -349,7 +349,7 @@ public class TaskManagerOptions {
 	 */
 	public static final ConfigOption<String> TASK_MANAGER_OUTPUT_LOCAL_OUTPUT_DIRS =
 		key("taskmanager.output.local-output-dirs")
-			.defaultValue("")
+			.defaultValue("/Users/weizhe.huang/test")
 			.withDescription("The available directories for the external shuffle service. It will be configured " +
 				"automatically and should not be configured manually.");
 
